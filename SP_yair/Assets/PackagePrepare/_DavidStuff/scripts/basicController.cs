@@ -114,7 +114,7 @@ public class basicController : MonoBehaviour
 
         rotation = Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime;
 
-        if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !isAttacking)
         {
             strafing = Input.GetAxis("Horizontal") * strafeSpeed * Time.deltaTime;
 

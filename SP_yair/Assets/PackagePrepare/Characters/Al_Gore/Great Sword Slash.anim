@@ -66748,14 +66748,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.5666667
+  - time: 1.3333334
     functionName: EndJointAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.7666667
+  - time: 1.4333333
     functionName: finishedAttacking
     data: 
     objectReferenceParameter: {fileID: 0}
