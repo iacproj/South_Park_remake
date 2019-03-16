@@ -23,6 +23,7 @@ public class basicController : MonoBehaviour
    public bool isDodging;
     public Vector3 myVelocity;
 
+    public GameObject trail;
 
     
    
@@ -33,6 +34,9 @@ public class basicController : MonoBehaviour
 
     public JointScript myJoint;
 
+    public bool hasDied = false;
+
+    public playerHealth myHealth;
 
     public GameObject woodenSword;
     public GameObject joint;
@@ -48,6 +52,8 @@ public class basicController : MonoBehaviour
         myAnim = GetComponent<Animator>();
         myWeapons = Weapons.Sword;
         b_script = bballer.GetComponent<bowlingBallerScript>();
+
+        trail.SetActive(false);
 
         t = 0;
 
@@ -105,12 +111,21 @@ public class basicController : MonoBehaviour
             myRig.velocity = transform.forward * (-1) * 2;
         }
 
+
+        if (myHealth.isDead == true && hasDied == false)
+        {
+            hasDied = true;
+            myAnim.SetTrigger("Death");
+        }
     }
 
     void movement()
     {
-        
 
+        if (hasDied == false)
+        {
+
+       
 
 
         rotation = Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime;
@@ -208,6 +223,8 @@ public class basicController : MonoBehaviour
 
            
         }
+
+        }
     }
 
     void finishedAttacking()
@@ -217,13 +234,14 @@ public class basicController : MonoBehaviour
         myAnim.SetInteger("Walking", 0);
         myAnim.SetBool("IsAttacking", false);
         swordScript.turnOffCollider();
+        trail.SetActive(false);
         
     }
 
     void startAttacking()
     {
         swordScript.turnOnCollider();
-        
+        trail.SetActive(true);
     }
 
     void callBowlingScript()

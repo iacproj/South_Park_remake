@@ -12,7 +12,7 @@ public class playerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pHealth = 100;
+        //pHealth = 100;
         isDead = false;
 
         
@@ -48,7 +48,7 @@ public class playerHealth : MonoBehaviour
 
         if (col.gameObject.tag == "Bullet")
         {
-            Debug.Log("hit by bullet");
+            pHealth -= 10;
             myFlea.Activate();
         }
 
