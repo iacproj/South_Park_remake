@@ -10,7 +10,8 @@ public class basicController : MonoBehaviour
     float runSpeed = 7;
    public float rotSpeed = 100;
    public float backSpeed = 1.5f;
-    float translation;
+    public float attackDriftSpeed;
+   public float translation;
     float rotation;
     float moveSpeed;
     float strafing;
@@ -134,8 +135,8 @@ public class basicController : MonoBehaviour
         transform.Rotate(0, rotation, 0);
         if (isAttacking)
         {
-            moveSpeed = 0;
-            translation = 0;
+            moveSpeed = attackDriftSpeed;
+            translation = Input.GetAxis("Vertical") * attackDriftSpeed * Time.deltaTime;
             rotation = 0;
             
         }
