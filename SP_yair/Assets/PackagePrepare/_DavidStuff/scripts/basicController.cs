@@ -214,6 +214,7 @@ public class basicController : MonoBehaviour
         Invoke("TurnOffIsAttacking", 1);
         
         myAnim.SetInteger("Walking", 0);
+        myAnim.SetBool("IsAttacking", false);
         swordScript.turnOffCollider();
         
     }
@@ -221,6 +222,7 @@ public class basicController : MonoBehaviour
     void startAttacking()
     {
         swordScript.turnOnCollider();
+        
     }
 
     void callBowlingScript()
@@ -264,10 +266,13 @@ public class basicController : MonoBehaviour
 
                 isAttacking = true;
 
+
                 if (myWeapons == Weapons.Sword)
                 {
 
                     myAnim.SetTrigger("SwordAttack");
+                    myAnim.SetBool("IsAttacking", true);
+                    myAnim.SetInteger("Walking", 0);
 
 
 
@@ -277,12 +282,16 @@ public class basicController : MonoBehaviour
 
                 if (myWeapons == Weapons.Joint)
                 {
-                    myAnim.SetInteger("Walking", 4);
+                    myAnim.SetTrigger("JointAttack");
+                    myAnim.SetBool("IsAttacking", true);
+                    myAnim.SetInteger("Walking", 0);
                 }
 
                 if (myWeapons == Weapons.BowlingBall)
                 {
-                    myAnim.SetInteger("Walking", 8);
+                    myAnim.SetTrigger("BowlingAttack");
+                    myAnim.SetBool("IsAttacking", true);
+                    myAnim.SetInteger("Walking", 0);
                 }
             }
            
