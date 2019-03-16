@@ -16,8 +16,8 @@ public class CopScript : MonoBehaviour
     public Transform PlayerLocation;
     private float walkSpeed = 1f;
     private float runSpeed = 5f;
-    private float detectionDistance = 15f;
-    private float stopChaseDistance = 20f;
+    private float detectionDistance = 10f;
+    private float stopChaseDistance = 12f;
     private float attackDistance = 8f;
     private float goBackToChasingDistance =10f;
     public bool is_Stopped;
@@ -65,6 +65,7 @@ public class CopScript : MonoBehaviour
         currentPoint = 0;
 
         GoToPoint();
+        PlayerLocation = GameObject.FindGameObjectWithTag("Player").transform;
 
         //hitter = GameObject.FindWithTag("Bat_hitter").GetComponent<Bat_hitter>();
 

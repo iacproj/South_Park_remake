@@ -54,7 +54,7 @@ public class NPC_navscript : MonoBehaviour
         GoToPoint();
         myAudio = GetComponent<AudioSource>();
 
-
+        PlayerLocation = GameObject.FindGameObjectWithTag("Player").transform;
 
         lookTarget = transform.position + transform.forward;
 

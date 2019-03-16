@@ -70,6 +70,7 @@ public class Redneckscript : MonoBehaviour
         GoToPoint();
 
         otherEnemyPresent = false;
+        PlayerLocation = GameObject.FindGameObjectWithTag("Player").transform;
 
         enemiesNearby = 0;
 

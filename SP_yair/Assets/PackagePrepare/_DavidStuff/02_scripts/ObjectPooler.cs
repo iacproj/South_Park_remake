@@ -23,7 +23,7 @@ public class ObjectPooler : MonoBehaviour
     void Start()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
-
+        playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
 
         foreach (Pool pool in Pools)
         {
