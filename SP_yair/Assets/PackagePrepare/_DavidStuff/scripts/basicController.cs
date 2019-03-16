@@ -101,15 +101,15 @@ public class basicController : MonoBehaviour
         movement();
 
 
-        if (isDodging == false)
-        {
-            myRig.velocity = new Vector3(0, 0, 0);
-        }
+        //if (isDodging == false)
+        //{
+        //    myRig.velocity = new Vector3(0, 0, 0);
+        //}
 
-        else
-        {
-            myRig.velocity = transform.forward * (-1) * 2;
-        }
+        //else
+        //{
+        //    myRig.velocity = transform.forward * (-1) * 2;
+        //}
 
 
         if (myHealth.isDead == true && hasDied == false)

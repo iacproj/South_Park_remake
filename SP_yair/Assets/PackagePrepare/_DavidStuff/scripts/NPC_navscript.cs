@@ -188,7 +188,7 @@ public class NPC_navscript : MonoBehaviour
         myAnim.SetInteger("walking", 1);
         myAgent.isStopped = false;
 
-        myAgent.speed = 1.2f;
+        myAgent.speed = 1f;
     }
 
     void Fleeing()
