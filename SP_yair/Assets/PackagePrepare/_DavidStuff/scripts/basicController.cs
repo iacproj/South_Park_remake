@@ -27,8 +27,8 @@ public class basicController : MonoBehaviour
     public GameObject trail;
 
     [SerializeField] UIController UIController;
-    
 
+    private Collider myCol;
 
 
     private float swordAttackCooldown = 1;
@@ -45,6 +45,9 @@ public class basicController : MonoBehaviour
     public GameObject woodenSword;
     public GameObject joint;
 
+    private float jointTimer;
+    [SerializeField]
+    private float jointCooldown=2;
 
     public enum Weapons {Sword, Joint, Flamethrower, BowlingBall };
     public Weapons myWeapons;
@@ -63,12 +66,16 @@ public class basicController : MonoBehaviour
 
         myRig = GetComponent<Rigidbody>();
         isDodging = false;
-       
+        jointTimer = jointCooldown;
+
+        myCol = GetComponent<Collider>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        UpdateTimers();
+        UpdateSkillsUI();
 
         myVelocity = myRig.velocity;
 
@@ -120,7 +127,19 @@ public class basicController : MonoBehaviour
         {
             hasDied = true;
             myAnim.SetTrigger("Death");
+            myRig.isKinematic = true;
+            myCol.enabled = false;
         }
+    }
+
+    private void UpdateTimers()
+    {
+        jointTimer += Time.fixedDeltaTime;
+    }
+
+    private void UpdateSkillsUI()
+    {
+        UIController.UpdateSkillUI(jointTimer / jointCooldown);
     }
 
     void movement()
@@ -305,10 +324,13 @@ public class basicController : MonoBehaviour
 
                 if (myWeapons == Weapons.Joint)
                 {
+                    if (jointTimer < jointCooldown)
+                        return;
                     UIController.JointAttack();
                     myAnim.SetTrigger("JointAttack");
                     myAnim.SetBool("IsAttacking", true);
                     myAnim.SetInteger("Walking", 0);
+                    jointTimer = 0;
                 }
 
                 if (myWeapons == Weapons.BowlingBall)

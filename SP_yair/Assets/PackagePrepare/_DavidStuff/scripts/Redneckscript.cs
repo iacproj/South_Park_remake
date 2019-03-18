@@ -36,8 +36,9 @@ public class Redneckscript : MonoBehaviour
     public bool otherEnemyPresent;
 
     int enemiesNearby;
-   
-    
+
+    playerHealth AGHealth;
+
     public characterHealth charHealth;
 
 
@@ -48,7 +49,7 @@ public class Redneckscript : MonoBehaviour
 
     float dist;
 
-    
+    public bool heDied = false;
 
     
     
@@ -64,6 +65,7 @@ public class Redneckscript : MonoBehaviour
         myAgent = GetComponent<NavMeshAgent>();
 
         myAnim = GetComponent<Animator>();
+        AGHealth = GameObject.FindGameObjectWithTag("pHealth").GetComponent<playerHealth>();
         myTrigger = GetComponent<Collider>();
         currentPoint = 0;
 
@@ -95,7 +97,26 @@ public class Redneckscript : MonoBehaviour
     void FixedUpdate()
 
     {
-        playerDist = Vector3.Distance(transform.position, PlayerLocation.position);
+        if (AGHealth.isDead == true && heDied == false)
+        {
+            myModes = RNModes.Walking;
+            Debug.Log("testy");
+            
+            GoToPoint();
+            heDied = true;
+
+        }
+
+
+        if (heDied == true)
+        {
+            playerDist = 100f;
+        }
+
+        else
+        {
+            playerDist = Vector3.Distance(transform.position, PlayerLocation.position);
+        }
 
         if (charHealth.isDead == true)
         {

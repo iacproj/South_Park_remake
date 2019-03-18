@@ -29,9 +29,9 @@ public class UIController : MonoBehaviour
     private void Update()
     {
 
-        
 
-        SkillBar.fillAmount = (SkillPercentage++ / 200);
+
+        FillSkillBar();
     }
 
     public void HealthUpdate(float healthPrecentage)
@@ -53,7 +53,7 @@ public class UIController : MonoBehaviour
     {
         if(SkillPercentage <= 100)
         {
-            SkillBar.fillAmount = (SkillPercentage++ / 200);
+            SkillBar.fillAmount = (SkillPercentage++ / 100);
         }
         else
         {
@@ -84,5 +84,8 @@ public class UIController : MonoBehaviour
         }
     }
 
-    
+    public void UpdateSkillUI(float jointFillAmount) 
+    {
+        JointCooldown.fillAmount = jointFillAmount;
+    }
 }

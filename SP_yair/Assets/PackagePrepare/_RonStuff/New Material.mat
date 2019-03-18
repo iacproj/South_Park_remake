@@ -73,7 +73,7 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DissortAmt: 0.172
+    - _DissortAmt: 0.077
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 1
     - _DistortionStrength: 5

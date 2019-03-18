@@ -22,6 +22,7 @@ public class CopScript : MonoBehaviour
     private float goBackToChasingDistance =10f;
     public bool is_Stopped;
 
+    playerHealth AGHealth;
     public GunShooter shooty;
     bool isStunned;
 
@@ -56,7 +57,7 @@ public class CopScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        AGHealth = GameObject.FindGameObjectWithTag("pHealth").GetComponent<playerHealth>();
         
         myAgent = GetComponent<NavMeshAgent>();
 
@@ -83,9 +84,20 @@ public class CopScript : MonoBehaviour
     void FixedUpdate()
 
     {
-        playerDist = Vector3.Distance(transform.position, PlayerLocation.position);
+       
         is_Stopped = myAgent.isStopped;
 
+        if (AGHealth.isDead == true)
+        {
+            myModes = RNModes.Walking;
+            Debug.Log("testy");
+            playerDist = 100f;
+        }
+
+        else
+        {
+            playerDist = Vector3.Distance(transform.position, PlayerLocation.position);
+        }
 
 
         if (charHealth.isDead == true)

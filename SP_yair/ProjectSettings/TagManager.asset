@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NPC
+  - Flea
+  - Enemy
+  - Bat_hitter
+  - Mackey
+  - Bullet
+  - Woody
+  - Smoke_emitter
+  - Ball
+  - pHealth
   layers:
   - Default
   - TransparentFX

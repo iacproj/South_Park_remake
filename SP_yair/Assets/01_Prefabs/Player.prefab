@@ -647,8 +647,12 @@ MonoBehaviour:
   dodgeForce: 0
   isDodging: 0
   myVelocity: {x: 0, y: 0, z: 0}
+  trail: {fileID: 400278477}
+  UIController: {fileID: 0}
   myRig: {fileID: 0}
   myJoint: {fileID: 515280493}
+  hasDied: 0
+  myHealth: {fileID: 1345424462}
   woodenSword: {fileID: 134865680}
   joint: {fileID: 515280491}
   myWeapons: 0
@@ -5632,7 +5636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &515280492
 Transform:
   m_ObjectHideFlags: 0
@@ -6762,8 +6766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10256301451662e4d93c5cfb2f074642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pHealth: 0
+  pHealth: 300
   isDead: 0
+  UISCript: {fileID: 0}
   myFlea: {fileID: 751438267}
 --- !u!1 &1349619074
 GameObject:
@@ -12158,7 +12163,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -12649,7 +12654,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.1
+      scalar: -0.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -12908,7 +12913,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 30
       minScalar: 10
       maxCurve:
         serializedVersion: 2
