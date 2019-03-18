@@ -258,6 +258,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 14770647}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &27394776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315476345, guid: 58de1fea3463cac4ebdec2e9b72a12e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1583213091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b61b5ef255c01745a0171e5fea3391a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &27667287 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3379467208531733935, guid: 9e9f4a8435748f548b925e39eeb2801c,
@@ -277,6 +289,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5506053, y: 1.1776978, z: 0.040645175}
   m_Center: {x: -0.031362236, y: -0.48724887, z: 0.02031751}
+--- !u!114 &53487515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4501080028445616816, guid: 705bc9116c5ca684aa9902b71794ba7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1301218037}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &54474890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6848059784510091732, guid: 0f87e3d60f84bb24fab5ec8e4a9b32ae,
@@ -8952,15 +8976,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -8.69
       objectReference: {fileID: 0}
-    - target: {fileID: 5840384326939292681, guid: f18aeced1b3dc5c46b4eb3f6b0c3d881,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.07
-      objectReference: {fileID: 0}
     - target: {fileID: 5840384327562650077, guid: f18aeced1b3dc5c46b4eb3f6b0c3d881,
         type: 3}
       propertyPath: m_Radius
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840384326939292681, guid: f18aeced1b3dc5c46b4eb3f6b0c3d881,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18aeced1b3dc5c46b4eb3f6b0c3d881, type: 3}
@@ -9426,6 +9450,9 @@ MonoBehaviour:
   HealthBar: {fileID: 541862001}
   SkillBar: {fileID: 937976435}
   SkillPercentage: 0
+  JointPercentage: 100
+  JointCooldown: {fileID: 53487515}
+  basicController: {fileID: 27394776}
 --- !u!1 &978470251
 GameObject:
   m_ObjectHideFlags: 0
@@ -11047,6 +11074,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4501080029405603137, guid: 705bc9116c5ca684aa9902b71794ba7c,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4501080027772956818, guid: 705bc9116c5ca684aa9902b71794ba7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11152,11 +11184,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4501080029405603137, guid: 705bc9116c5ca684aa9902b71794ba7c,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4501080028445616816, guid: 705bc9116c5ca684aa9902b71794ba7c,
         type: 3}
       propertyPath: m_Type
@@ -11171,6 +11198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillAmount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501080028445616816, guid: 705bc9116c5ca684aa9902b71794ba7c,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4501080029220079554, guid: 705bc9116c5ca684aa9902b71794ba7c,
         type: 3}
@@ -12898,6 +12930,14 @@ PrefabInstance:
       propertyPath: myHealth
       value: 
       objectReference: {fileID: 1453919190}
+    - target: {fileID: 315476345, guid: 58de1fea3463cac4ebdec2e9b72a12e8, type: 3}
+      propertyPath: UIController
+      value: 
+      objectReference: {fileID: 978142524}
+    - target: {fileID: 315476345, guid: 58de1fea3463cac4ebdec2e9b72a12e8, type: 3}
+      propertyPath: JointCooldown
+      value: 
+      objectReference: {fileID: 53487515}
     - target: {fileID: 315476343, guid: 58de1fea3463cac4ebdec2e9b72a12e8, type: 3}
       propertyPath: m_Drag
       value: 0

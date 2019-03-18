@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class basicController : MonoBehaviour
 {
@@ -25,8 +26,11 @@ public class basicController : MonoBehaviour
 
     public GameObject trail;
 
+    [SerializeField] UIController UIController;
     
-   
+
+
+
     private float swordAttackCooldown = 1;
     private float t;
 
@@ -301,6 +305,7 @@ public class basicController : MonoBehaviour
 
                 if (myWeapons == Weapons.Joint)
                 {
+                    UIController.JointAttack();
                     myAnim.SetTrigger("JointAttack");
                     myAnim.SetBool("IsAttacking", true);
                     myAnim.SetInteger("Walking", 0);

@@ -13,6 +13,12 @@ public class UIController : MonoBehaviour
     [SerializeField] Image HealthBar;
     [SerializeField] Image SkillBar;
     [SerializeField] float SkillPercentage;
+    [SerializeField] float JointPercentage = 100f;
+
+    [SerializeField] Image JointCooldown;
+    [SerializeField] basicController basicController;
+
+    
 
     private void Start()
     {
@@ -23,7 +29,7 @@ public class UIController : MonoBehaviour
     private void Update()
     {
 
-
+        
 
         SkillBar.fillAmount = (SkillPercentage++ / 200);
     }
@@ -54,6 +60,16 @@ public class UIController : MonoBehaviour
             SkillPercentage = SkillPercentage;
         }
     }
+
+    public void JointAttack()
+    {
+        SkillPercentage = SkillPercentage - 55;
+        
+
+        
+    }
+
+    
 
     private void HealthImageUpdate(float healthPrecentage)
     {
