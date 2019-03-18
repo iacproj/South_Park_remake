@@ -6,7 +6,9 @@ public class playerHealth : MonoBehaviour
 {
 
     public float pHealth;
+    private float maxHp;
     public bool isDead;
+    [SerializeField] UIController UISCript;
 
     public FleaScript myFlea;
     // Start is called before the first frame update
@@ -14,10 +16,10 @@ public class playerHealth : MonoBehaviour
     {
         //pHealth = 100;
         isDead = false;
+        maxHp = pHealth;
 
-        
 
-        
+
     }
 
     // Update is called once per frame
@@ -38,18 +40,21 @@ public class playerHealth : MonoBehaviour
         {
             pHealth -= 10;
             myFlea.Activate();
+            UISCript.HealthUpdate((pHealth / maxHp) * 100);
         }
 
         if (col.gameObject.tag == "Bat_hitter")
         {
             pHealth -= 10;
             myFlea.Activate();
+            UISCript.HealthUpdate((pHealth / maxHp) * 100);
         }
 
         if (col.gameObject.tag == "Bullet")
         {
             pHealth -= 10;
             myFlea.Activate();
+            UISCript.HealthUpdate((pHealth / maxHp) * 100);
         }
 
 
