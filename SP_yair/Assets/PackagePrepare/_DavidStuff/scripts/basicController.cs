@@ -45,6 +45,8 @@ public class basicController : MonoBehaviour
     public GameObject woodenSword;
     public GameObject joint;
 
+    public bool hasBall = false;
+
     private float jointTimer;
     [SerializeField]
     private float jointCooldown=2;
@@ -333,15 +335,17 @@ public class basicController : MonoBehaviour
                     jointTimer = 0;
                 }
 
-                if (myWeapons == Weapons.BowlingBall)
-                {
-                    myAnim.SetTrigger("BowlingAttack");
-                    myAnim.SetBool("IsAttacking", true);
-                    myAnim.SetInteger("Walking", 0);
-                }
+              
             }
            
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q) && hasBall)
+        {
+            myAnim.SetTrigger("BowlingAttack");
+            myAnim.SetBool("IsAttacking", true);
+            myAnim.SetInteger("Walking", 0);
         }
 
     }
@@ -371,6 +375,16 @@ public class basicController : MonoBehaviour
     void MakeDodgingFalse()
     {
         isDodging = false;
+    }
+
+    private void OnCollisionEnter(Collision collie)
+    {
+        if (collie.gameObject.tag == "Ball")
+        {
+            hasBall = true;
+
+            Destroy(collie.gameObject);
+        }   
     }
 
 }

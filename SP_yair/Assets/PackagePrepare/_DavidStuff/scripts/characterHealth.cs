@@ -80,7 +80,7 @@ public class characterHealth : MonoBehaviour
     void BallDamage()
     {
         charHealth -= 100;
-        myFlea.Activate();
+        
 
         if (gameObject.tag == "NPC" && wasAttacked == false)
         {

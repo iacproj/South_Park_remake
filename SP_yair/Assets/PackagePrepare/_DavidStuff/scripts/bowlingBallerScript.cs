@@ -77,7 +77,7 @@ public class bowlingBallerScript : MonoBehaviour
         clone.transform.position = transform.position;
         clone.transform.rotation = transform.rotation;
         myRig = clone.GetComponent<Rigidbody>();
-        myRig.AddForce(transform.forward * 1000);
+        myRig.AddForce(transform.forward * 100000);
 
         bowlingPoolDictionary[tag].Enqueue(clone);
 
