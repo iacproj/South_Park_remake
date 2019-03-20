@@ -18,9 +18,11 @@ public class CopScript : MonoBehaviour
     private float runSpeed = 5f;
     private float detectionDistance = 10f;
     private float stopChaseDistance = 12f;
+    private float altStopChaseDistance = 200f;
     private float attackDistance = 8f;
     private float goBackToChasingDistance =10f;
-    public bool is_Stopped;
+     bool is_Stopped;
+    public bool isAlt;
 
     playerHealth AGHealth;
     public GunShooter shooty;
@@ -64,8 +66,7 @@ public class CopScript : MonoBehaviour
         myAnim = GetComponent<Animator>();
         myTrigger = GetComponent<Collider>();
         currentPoint = 0;
-
-        GoToPoint();
+        
         PlayerLocation = GameObject.FindGameObjectWithTag("Player").transform;
 
         //hitter = GameObject.FindWithTag("Bat_hitter").GetComponent<Bat_hitter>();
@@ -76,7 +77,16 @@ public class CopScript : MonoBehaviour
 
         myModes = RNModes.Walking;
         GoToPoint();
-        
+        if (isAlt == false)
+        {
+            myModes = RNModes.Walking;
+            GoToPoint();
+        }
+
+        else
+        {
+            myModes = RNModes.Chasing;
+        }
 
     }
 
@@ -215,14 +225,28 @@ public class CopScript : MonoBehaviour
 
         myAnim.SetInteger("Walking", 2);
         myAgent.SetDestination(PlayerLocation.position);
-
-        if (playerDist >= stopChaseDistance)
+        if (isAlt == false)
         {
-            myModes = RNModes.Walking;
-            GoToPoint();
-           
+            if (playerDist >= stopChaseDistance)
+            {
+                myModes = RNModes.Walking;
+                GoToPoint();
 
+
+            }
         }
+
+        else
+        {
+            if (playerDist >= altStopChaseDistance)
+            {
+                myModes = RNModes.Walking;
+                GoToPoint();
+
+
+            }
+        }
+       
 
             if (playerDist <= attackDistance)
             {

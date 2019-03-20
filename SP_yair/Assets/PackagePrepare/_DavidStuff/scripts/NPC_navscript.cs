@@ -240,7 +240,7 @@ public class NPC_navscript : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Flea")
+        if (col.gameObject.tag == "Flea" && hasDied == false)
         {
             if (fleeing == false)
             {

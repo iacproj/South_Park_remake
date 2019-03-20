@@ -14,11 +14,15 @@ public class characterHealth : MonoBehaviour
     float enemyHealth = 100;
     float MBPHealth = 400;
     float NPCHealth = 100;
+    bool wasAttacked = false;
 
+    CopSpawner mySpawner;
     public FleaScript myFlea;
     // Start is called before the first frame update
     void Start()
     {
+
+        mySpawner = GameObject.FindGameObjectWithTag("CopSpawner").GetComponent<CopSpawner>();
 
         if (gameObject.tag == "NPC")
         {
@@ -56,7 +60,20 @@ public class characterHealth : MonoBehaviour
     void WoodenSwordDamage()
     {
         charHealth -= 50;
-        myFlea.Activate();
+
+        if (gameObject.tag != "NPC")
+        {
+            myFlea.Activate();
+        }
+        
+
+        if (gameObject.tag == "NPC" && wasAttacked == false)
+        {
+            mySpawner.SpawnCop();
+            wasAttacked = true;
+        }
+
+        
 
     }
 
@@ -64,6 +81,17 @@ public class characterHealth : MonoBehaviour
     {
         charHealth -= 100;
         myFlea.Activate();
+
+        if (gameObject.tag == "NPC" && wasAttacked == false)
+        {
+            mySpawner.SpawnCop();
+            wasAttacked = true;
+        }
+
+        if (gameObject.tag != "NPC")
+        {
+            myFlea.Activate();
+        }
     }
 
 
