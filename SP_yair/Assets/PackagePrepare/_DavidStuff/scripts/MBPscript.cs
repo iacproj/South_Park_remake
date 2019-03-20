@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 public class MBPscript : MonoBehaviour
 {
 
-
+    public bool isAlt;
     private NavMeshAgent myAgent;
     private Collider myTrigger;
     public Transform[] patrolPoints;
@@ -57,17 +57,25 @@ public class MBPscript : MonoBehaviour
         myAnim = GetComponent<Animator>();
         myTrigger = GetComponent<Collider>();
         currentPoint = 0;
-
-        GoToPoint();
+        PlayerLocation = GameObject.FindGameObjectWithTag("Player").transform;
+        
 
         puncher = GameObject.FindWithTag("MBP_puncher").GetComponent<MBP_puncherScript>();
 
 
 
         lookTarget = transform.position + transform.forward;
+        if (isAlt == true)
+        {
+            myModes = MBPModes.Idling;
+        }
 
-        myModes = MBPModes.Walking;
-        GoToPoint();
+        else
+        {
+            myModes = MBPModes.Walking;
+            GoToPoint();
+        }
+      
         
 
     }
@@ -129,18 +137,30 @@ public class MBPscript : MonoBehaviour
       
         // transform.LookAt(PlayerLocation);
         myAnim.SetInteger("Walking", 0);
-
-        if (playerDist <= detectionDistance)
+        if (isAlt == false)
         {
-            myModes = MBPModes.Chasing;
-           
+            if (playerDist <= detectionDistance)
+            {
+                myModes = MBPModes.Chasing;
 
+
+            }
+
+            if (waiting == true)
+            {
+                Invoke("backToPatrolling", 5);
+            }
         }
 
-        if (waiting == true)
+        if (isAlt == true)
         {
-            Invoke("backToPatrolling", 5);
+            if (playerDist < 5)
+            {
+                GoToPoint();
+                myModes = MBPModes.Walking;
+            }
         }
+       
 
     }
 
@@ -148,26 +168,40 @@ public class MBPscript : MonoBehaviour
     {
         if (myAgent.remainingDistance <= 0.3f  )
         {
-            if (waiting == true)
+            if (isAlt == false)
             {
-                myModes = MBPModes.Idling;
-                
-            }
+                if (waiting == true)
+                {
+                    myModes = MBPModes.Idling;
 
-            else
-            {
-                GoToPoint();
-                
+                }
+
+                else
+                {
+                    GoToPoint();
+
+                }
             }
            
         }
 
 
-        if (playerDist <= detectionDistance)
+        if (isAlt == false)
         {
-            myModes = MBPModes.Chasing;
-            
+            if (playerDist <= detectionDistance)
+            {
+                myModes = MBPModes.Chasing;
 
+
+            }
+        }
+
+        else
+        {
+            if (myAgent.remainingDistance <= 0.3f)
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         myAnim.SetInteger("Walking", 1);
