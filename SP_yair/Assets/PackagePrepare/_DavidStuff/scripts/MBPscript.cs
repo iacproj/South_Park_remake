@@ -154,7 +154,7 @@ public class MBPscript : MonoBehaviour
 
         if (isAlt == true)
         {
-            if (playerDist < 8)
+            if (playerDist < 15)
             {
                 GoToPoint();
                 myModes = MBPModes.Walking;
