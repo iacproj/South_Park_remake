@@ -41,6 +41,8 @@ public class NPC_navscript : MonoBehaviour
     public enum NPCModes { Idling, Walking, Fleeing, Death };
     public NPCModes myModes;
 
+    bool bewl = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -109,25 +111,11 @@ public class NPC_navscript : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, newRot, lookAtSmoothFactor * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.U))
+        if (charHealth.wasAttacked == true && bewl == false)
         {
-
-           
-          
-
-
-
+            PreFleeing();
+            bewl = true;
         }
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            
-        }
-
-        //if (Input.GetKey(KeyCode.U))
-        //{
-            
-        //}
       
 
 
@@ -215,7 +203,7 @@ public class NPC_navscript : MonoBehaviour
         {
             fleeing = false;
             GoToPoint();
-            ;
+            
             myModes = NPCModes.Walking;
 
         }
@@ -242,21 +230,28 @@ public class NPC_navscript : MonoBehaviour
     {
         if (col.gameObject.tag == "Flea" && hasDied == false)
         {
-            if (fleeing == false)
+            if (fleeing == false && hasDied == false)
             {
 
 
-                myModes = NPCModes.Fleeing;
-                fleeing = true;
 
-                testVec = new Vector3(Random.Range(-40f, 40f), transform.position.y, Random.Range(-40, 40));
-                myAgent.SetDestination(testVec);
-
-                Invoke("StopFleeing", 8);
-
+                PreFleeing();
+                
+                
             }
 
         }
+    }
+
+    void PreFleeing()
+    {
+        myModes = NPCModes.Fleeing;
+        fleeing = true;
+
+        testVec = new Vector3(Random.Range(-40f, 40f), transform.position.y, Random.Range(-40, 40));
+        myAgent.SetDestination(testVec);
+
+        Invoke("StopFleeing", 8);
     }
 
     void OnTriggerStay(Collider col)
@@ -306,6 +301,10 @@ public class NPC_navscript : MonoBehaviour
         }
 
         myTrigger.enabled = false;
+
+        transform.Translate(Vector3.zero);
+        transform.Rotate(Vector3.zero);
+
         
     }
 }

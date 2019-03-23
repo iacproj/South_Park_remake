@@ -520,6 +520,7 @@ public class Redneckscript : MonoBehaviour
 
             hasDied = true;
             myAnim.SetTrigger("Death");
+            increaseAttackCounter();
 
 
 

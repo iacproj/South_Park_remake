@@ -14,7 +14,7 @@ public class characterHealth : MonoBehaviour
     float enemyHealth = 100;
     float MBPHealth = 400;
     float NPCHealth = 100;
-    bool wasAttacked = false;
+    public bool wasAttacked = false;
 
     CopSpawner mySpawner;
     public FleaScript myFlea;
