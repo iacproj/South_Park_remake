@@ -245,13 +245,18 @@ public class NPC_navscript : MonoBehaviour
 
     void PreFleeing()
     {
-        myModes = NPCModes.Fleeing;
-        fleeing = true;
 
-        testVec = new Vector3(Random.Range(-40f, 40f), transform.position.y, Random.Range(-40, 40));
-        myAgent.SetDestination(testVec);
+        if (hasDied == false)
+        {
+            myModes = NPCModes.Fleeing;
+            fleeing = true;
 
-        Invoke("StopFleeing", 8);
+            testVec = new Vector3(Random.Range(-40f, 40f), transform.position.y, Random.Range(-40, 40));
+            myAgent.SetDestination(testVec);
+
+            Invoke("StopFleeing", 8);
+        }
+ 
     }
 
     void OnTriggerStay(Collider col)
@@ -297,7 +302,7 @@ public class NPC_navscript : MonoBehaviour
         {
             myAnim.SetInteger("walking", 10);
             hasDied = true;
-            
+            myAgent.enabled = false;
         }
 
         myTrigger.enabled = false;
