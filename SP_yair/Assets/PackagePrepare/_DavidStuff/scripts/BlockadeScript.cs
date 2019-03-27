@@ -23,7 +23,8 @@ public class BlockadeScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Ball")
         {
-            myRig.mass = 1;
+            myRig.isKinematic = false;
+            Debug.Log("w");
         }
     }
 }
