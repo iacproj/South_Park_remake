@@ -27,7 +27,7 @@ public class SatanScript : MonoBehaviour
         {
             if (hasStomped == false)
             {
-                timeStamp = Time.time + 5;
+                timeStamp = Time.time + 30;
                 hasStomped = true;
 
             }
