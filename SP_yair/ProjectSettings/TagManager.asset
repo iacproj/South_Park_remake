@@ -16,6 +16,7 @@ TagManager:
   - pHealth
   - MBP_puncher
   - CopSpawner
+  - Cereal
   layers:
   - Default
   - TransparentFX
