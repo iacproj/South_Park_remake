@@ -86,7 +86,7 @@ MonoBehaviour:
     value: 0.1
   focalLength:
     overrideState: 1
-    value: 44
+    value: 40
   kernelSize:
     overrideState: 1
     value: 0
@@ -189,11 +189,11 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -5
   tint:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 11
   colorFilter:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
@@ -202,7 +202,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 0
+    value: 35
   brightness:
     overrideState: 0
     value: 0
