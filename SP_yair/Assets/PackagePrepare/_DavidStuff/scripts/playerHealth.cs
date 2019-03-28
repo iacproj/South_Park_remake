@@ -57,7 +57,20 @@ public class playerHealth : MonoBehaviour
             UISCript.HealthUpdate((pHealth / maxHp) * 100);
         }
 
+        if (col.gameObject.tag == "Cereal")
+        {
+            if (pHealth <= 200)
+            {
+                pHealth += 100;
+            }
 
+            else
+            {
+                pHealth = pHealth + (300 - pHealth);
+            }
+            Destroy(col.gameObject);
+            Debug.Log("Cereal");
+        }
 
 
 
