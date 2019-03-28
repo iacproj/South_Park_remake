@@ -12,6 +12,7 @@ public class MBP_puncherScript : MonoBehaviour
     void Start()
     {
         myCollider = GetComponent<Collider>();
+        myCollider.enabled = false;
     }
 
     // Update is called once per frame
@@ -34,5 +35,6 @@ public class MBP_puncherScript : MonoBehaviour
   public void TurnBackOn()
     {
         myCollider.enabled = true;
+        Debug.Log("dada");
     }
 }

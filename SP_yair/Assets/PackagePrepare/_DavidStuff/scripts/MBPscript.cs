@@ -18,7 +18,7 @@ public class MBPscript : MonoBehaviour
     private float runSpeed = 5f;
     private float detectionDistance = 15f;
     private float stopChaseDistance = 20f;
-    private float attackDistance = 2.2f;
+    private float attackDistance = 2.7f;
     private float goBackToChasingDistance = 3f;
     private bool hasRoared = true;
    public int attackCounter = 1;
@@ -29,9 +29,9 @@ public class MBPscript : MonoBehaviour
     public Transform lookAtPoint;
 
     public MBP_puncherScript puncher;
-   
-    
-   // public characterHealth charHealth;
+
+    public characterHealth charHealth;
+    // public characterHealth charHealth;
 
 
     private Vector3 lookTarget;
@@ -40,9 +40,13 @@ public class MBPscript : MonoBehaviour
     Animator myAnim;
 
     float dist;
+    playerHealth AGHealth;
 
-    
-    
+
+    public bool heDied = false;
+
+
+
     public bool hasDied = false;
 
     public enum MBPModes { Idling, Walking, Chasing, Attacking, Death };
@@ -53,6 +57,7 @@ public class MBPscript : MonoBehaviour
     void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
+        AGHealth = GameObject.FindGameObjectWithTag("pHealth").GetComponent<playerHealth>();
 
         myAnim = GetComponent<Animator>();
         myTrigger = GetComponent<Collider>();
@@ -60,7 +65,7 @@ public class MBPscript : MonoBehaviour
         PlayerLocation = GameObject.FindGameObjectWithTag("Player").transform;
         
 
-        puncher = GameObject.FindWithTag("MBP_puncher").GetComponent<MBP_puncherScript>();
+        //puncher = GameObject.FindWithTag("MBP_puncher").GetComponent<MBP_puncherScript>();
 
 
 
@@ -86,12 +91,37 @@ public class MBPscript : MonoBehaviour
     {
         playerDist = Vector3.Distance(transform.position, PlayerLocation.position);
 
-        
-       
+
+
         //if (charHealth.isDead == true)
         //{
         //    myModes = MBPModes.Death;
         //}
+        if (AGHealth.isDead == true && heDied == false)
+        {
+            myModes = MBPModes.Walking;
+            Debug.Log("testy");
+
+            GoToPoint();
+            heDied = true;
+
+        }
+
+
+        if (heDied == true)
+        {
+            playerDist = 100f;
+        }
+
+        else
+        {
+            playerDist = Vector3.Distance(transform.position, PlayerLocation.position);
+        }
+
+        if (charHealth.isDead == true)
+        {
+            myModes = MBPModes.Death;
+        }
 
 
 
@@ -119,7 +149,7 @@ public class MBPscript : MonoBehaviour
 
             case MBPModes.Death:
                 
-               // Death();
+               Death();
                 break;
         }
 
@@ -252,7 +282,7 @@ public class MBPscript : MonoBehaviour
     void Attacking()
     {
         
-        transform.LookAt(lookAtPoint);
+        transform.LookAt(PlayerLocation);
         myAgent.isStopped = true;
       
 
@@ -335,6 +365,7 @@ public class MBPscript : MonoBehaviour
     {
         puncher.TurnBackOn();
         isAttacking = true;
+        
     }
 
     void backToPatrolling()
@@ -351,20 +382,27 @@ public class MBPscript : MonoBehaviour
         waiting = true;
     }
 
-    //void Death()
-    //{
-    //    myAgent.isStopped = true;
-    //    if (charHealth.isDead == true && hasDied == false)
-    //    {
-    //        myAnim.SetInteger("walking", 10);
-    //        hasDied = true;
+    void Death()
+    {
 
-    //    }
+        if (charHealth.isDead == true && hasDied == false)
+        {
+            myAgent.isStopped = true;
 
-    //    myTrigger.enabled = false;
+            hasDied = true;
+            myAnim.SetTrigger("Death");
+            increaseAttackCounter();
 
-    //}
 
+
+
+            myTrigger.enabled = false;
+
+
+        }
+
+
+    }
 
 
 }
