@@ -17,7 +17,7 @@ public class CopScript : MonoBehaviour
     private float walkSpeed = 1f;
     private float runSpeed = 5f;
     private float detectionDistance = 10f;
-    private float stopChaseDistance = 50f;
+    private float stopChaseDistance = 15f;
     private float altStopChaseDistance = 200f;
     private float attackDistance = 8f;
     private float goBackToChasingDistance =10f;
