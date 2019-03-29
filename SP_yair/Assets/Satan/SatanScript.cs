@@ -9,6 +9,8 @@ public class SatanScript : MonoBehaviour
     bool hasStomped = false;
    public bool triggered = false;
     public MedKitSpawner mySpawner;
+
+    public GameObject fireBlock;
     
     Animator myAnim;
     // Start is called before the first frame update
@@ -41,6 +43,8 @@ public class SatanScript : MonoBehaviour
                 myAnim.SetTrigger("Stomp");
                 hasStomped = false;
             }
+
+            fireBlock.SetActive(true);
         }
         
     }
