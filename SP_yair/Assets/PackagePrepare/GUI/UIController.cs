@@ -30,7 +30,6 @@ public class UIController : MonoBehaviour
     {
 
 
-
         FillSkillBar();
     }
 
@@ -81,6 +80,10 @@ public class UIController : MonoBehaviour
         else if (healthPrecentage <= 20)
         {
             healthImage.sprite = noHp;
+        }
+        if(healthPrecentage > 50)
+        {
+            healthImage.sprite = fullHp;
         }
     }
 
