@@ -7,12 +7,14 @@ public class MBP_puncherScript : MonoBehaviour
 
 
     private Collider myCollider;
-    
+    [SerializeField] GameObject TrailParent;
+
     // Start is called before the first frame update
     void Start()
     {
         myCollider = GetComponent<Collider>();
         myCollider.enabled = false;
+        TrailParent.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,11 +32,13 @@ public class MBP_puncherScript : MonoBehaviour
     public void TurnOffCollider()
     {
         myCollider.enabled = false;
+        TrailParent.SetActive(false);
     }
 
   public void TurnBackOn()
     {
         myCollider.enabled = true;
+        TrailParent.SetActive(true);
         Debug.Log("dada");
     }
 }

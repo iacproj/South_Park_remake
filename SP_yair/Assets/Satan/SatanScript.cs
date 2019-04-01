@@ -9,9 +9,7 @@ public class SatanScript : MonoBehaviour
     bool hasStomped = false;
    public bool triggered = false;
     public MedKitSpawner mySpawner;
-    [SerializeField] GameObject MbpPrefab;
-
-    [SerializeField] Collider MbpSpawnZone;
+   
 
     public GameObject fireBlock;
     
@@ -21,7 +19,7 @@ public class SatanScript : MonoBehaviour
     {
         triggered = false;
         myAnim = GetComponent<Animator>();
-        MbpPrefab.SetActive(false);
+        
 
 
     }
@@ -59,16 +57,11 @@ public class SatanScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             triggered = true;
+            
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.F))
-        {
-            MbpPrefab.SetActive(true);
-        }
-    }
+    
 
     void Spawnz()
     {

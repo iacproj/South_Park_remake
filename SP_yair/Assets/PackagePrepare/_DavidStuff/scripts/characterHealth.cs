@@ -34,7 +34,7 @@ public class characterHealth : MonoBehaviour
             charHealth = enemyHealth;
         }
 
-        else
+        if(gameObject.tag == "MBP")
         {
             charHealth = MBPHealth;
         }

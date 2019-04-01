@@ -17,6 +17,7 @@ TagManager:
   - MBP_puncher
   - CopSpawner
   - Cereal
+  - MBP
   layers:
   - Default
   - TransparentFX
