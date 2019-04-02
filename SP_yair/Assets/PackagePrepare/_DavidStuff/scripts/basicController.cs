@@ -44,8 +44,10 @@ public class basicController : MonoBehaviour
 
     public GameObject woodenSword;
     public GameObject joint;
+    [SerializeField] GameObject JointPic;
 
     public bool hasBall = false;
+    [SerializeField] GameObject BowlingPic;
 
     private float jointTimer;
     [SerializeField]
@@ -63,6 +65,8 @@ public class basicController : MonoBehaviour
         b_script = bballer.GetComponent<bowlingBallerScript>();
 
         trail.SetActive(false);
+        JointPic.SetActive(false);
+        BowlingPic.SetActive(false);
 
         t = 0;
 
@@ -86,11 +90,13 @@ public class basicController : MonoBehaviour
             case Weapons.Sword:
                 woodenSword.SetActive(true);
                 joint.SetActive(false);
+                JointPic.SetActive(false);
                 break;
 
             case Weapons.Joint:
                 woodenSword.SetActive(false);
                 joint.SetActive(true);
+                JointPic.SetActive(true);
                 break;
 
             case Weapons.Flamethrower:
@@ -100,6 +106,7 @@ public class basicController : MonoBehaviour
                 
                 woodenSword.SetActive(false);
                 joint.SetActive(false);
+                JointPic.SetActive(false);
 
 
                 break;
@@ -382,6 +389,7 @@ public class basicController : MonoBehaviour
         if (collie.gameObject.tag == "Ball")
         {
             hasBall = true;
+            BowlingPic.SetActive(true);
 
             Destroy(collie.gameObject);
         }   
