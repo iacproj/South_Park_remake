@@ -38,7 +38,7 @@ public class playerHealth : MonoBehaviour
     {
         if (col.gameObject.tag == "MBP_puncher")
         {
-            pHealth -= 10;
+            pHealth -= 45;
             myFlea.Activate();
             UISCript.HealthUpdate((pHealth / maxHp) * 100);
         }
@@ -52,7 +52,7 @@ public class playerHealth : MonoBehaviour
 
         if (col.gameObject.tag == "Bullet")
         {
-            pHealth -= 10;
+            pHealth -= 20;
             myFlea.Activate();
             UISCript.HealthUpdate((pHealth / maxHp) * 100);
         }
