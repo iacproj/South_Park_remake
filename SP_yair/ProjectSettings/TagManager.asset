@@ -18,6 +18,7 @@ TagManager:
   - CopSpawner
   - Cereal
   - MBP
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

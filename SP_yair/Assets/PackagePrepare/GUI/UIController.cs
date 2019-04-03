@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] Image healthImage;
-    [SerializeField] Sprite fullHp;
-    [SerializeField] Sprite halfHp;
-    [SerializeField] Sprite noHp;
-    [SerializeField] Image HealthBar;
+    public Image healthImage;
+    public Sprite fullHp;
+    public Sprite halfHp;
+    public Sprite noHp;
+    public Image HealthBar;
     [SerializeField] Image SkillBar;
     [SerializeField] float SkillPercentage;
     [SerializeField] float JointPercentage = 100f;

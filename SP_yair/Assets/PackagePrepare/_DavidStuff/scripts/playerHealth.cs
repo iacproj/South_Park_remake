@@ -6,9 +6,11 @@ public class playerHealth : MonoBehaviour
 {
 
     public float pHealth;
-    private float maxHp;
+    public float maxHp;
     public bool isDead;
     [SerializeField] UIController UISCript;
+
+   
 
     public FleaScript myFlea;
     // Start is called before the first frame update
@@ -28,8 +30,19 @@ public class playerHealth : MonoBehaviour
         if (pHealth <= 0 && isDead == false)
         {
             isDead = true;
+            
+            
         }
+
+
     }
+
+   public void FillHpBack()
+    {
+        pHealth = 300;
+    }
+
+
 
 
 
@@ -73,6 +86,8 @@ public class playerHealth : MonoBehaviour
             Destroy(col.gameObject);
             
         }
+
+        
 
 
 
